@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+            padding-top: 60px; /* Espacio para el nav fijo */
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Asegura que la página ocupe toda la altura */
+        }
+
+        /* Barra de navegación fija */
+        nav {
+            position: fixed; /* Fija el nav en la parte superior */
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(155, 81, 118);
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000; /* Asegura que el nav esté sobre otros elementos */
+            height: 40px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav a {
+            margin: 0 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            color: white;
+            background-color: rgb(204, 106, 155);
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: rgb(236, 165, 201);
+            opacity: 0.9;
+        }
+
+        /* Contenedor principal que ocupa toda la altura disponible */
+        .container {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; /* Hace que el contenedor ocupe todo el espacio disponible */
+            justify-content: space-between;
+            padding-bottom: 60px; /* Da espacio para el formulario al fondo */
+        }
+
+        /* Estilos del formulario y de los botones */
+        .form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #fff; /* Fondo blanco */
+            padding: 10px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenedor */
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+            margin-right: 10px;
+            width: 70%; /* Toma el 70% del ancho disponible */
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: rgb(155, 81, 118);
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .a {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: rgb(219, 219, 219);
+            text-decoration: none;
+            color: black;
+            margin-top: 40px;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación fija -->
+    <nav>
+        <a href="{{ path('app_chat_index') }}">chats</a> <!-- Aquí debes cambiar 'app_chat_index' al path correspondiente a tu vista de chats -->
+        <a href="{{ path('app_logout') }}" class="styled-link">salir</a>
+    </nav>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+       
+        <form action="{{ path('app_message_new') }}" method="POST">
+            <!-- Contenedor del input y el botón -->
+            <div class="form-container">
+                <input type="text" name="name" placeholder="Escribe aquí" id="input" required><br>
+                <button class="create-chat" type="submit">▶</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
